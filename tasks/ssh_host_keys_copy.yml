@@ -1,12 +1,12 @@
 ---
 
 #Remote
-- name: create SSH host key directory in /home/ - assumes a shared /home directory
+- name: create SSH host key directory in ssh_host_keys_dir - assumes a shared directory
   file: "path={{ ssh_host_keys_dir }}/{{ item }}/ssh/ state=directory mode=0750 owner=root group=admin"
   with_items: groups.compute
   when: generate_ssh_known_hosts
 
-- name: create SSH known_hosts directory in /var/www/html
+- name: Ensure that the SSH known_hosts directory exists
   file: "path={{ ssh_known_hosts_dir }} state=directory mode=0755"
   when: generate_ssh_known_hosts
 
