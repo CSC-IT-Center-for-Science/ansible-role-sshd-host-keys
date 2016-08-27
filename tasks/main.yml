@@ -12,6 +12,11 @@
   become: False
   when: generate_ssh_known_hosts
 
+# minimize the set of hosts for copying if the step is skipped. Ansible will otherwise iterate over the entire set (and skip for each element).
+- name: store install_ssh_host_keys_to_nfs hosts to variable
+  set_fact:
+    copy_hosts: "{% if install_ssh_host_keys_to_nfs %} '{{ groups.compute }}' {% else %} '{{ ansible_hostname }}' {% endif %}"
+
 - include: ssh_host_keys_copy.yml
   tags: ssh_host_keys
   become: True
