@@ -7,7 +7,7 @@ Requirements
 ------------
 
  - A set of pre-generated sshd host keys.
-  - See https://github.com/CSC-IT-Center-for-Science/ansible-role-pxe_config
+  - See https://github.com/CSCfi/ansible-role-pxe_config
  - This should only be run on a compute node with ansible-pull
 
 Role Variables
@@ -18,7 +18,7 @@ See defaults/main.yml
 Dependencies
 ------------
 
-https://github.com/CSC-IT-Center-for-Science/ansible-role-pxe_config
+https://github.com/CSCfi/ansible-role-pxe_config
 
 and an sshd role which configures sshd to use the new known_hosts files
 
