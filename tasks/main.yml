@@ -2,24 +2,24 @@
 # tasks file for ansible-role-sshd-host-keys
 #
 
-- include: ssh_host_keys.yml
+- include_tasks: ssh_host_keys.yml
   tags: ssh_host_keys
   become: False
   when: generate_ssh_host_keys
 
-- include: ssh_known_hosts.yml
+- include_tasks: ssh_known_hosts.yml
   tags: ssh_known_hosts
   become: False
   when: generate_ssh_known_hosts
 
-- include: ssh_host_keys_copy.yml
+- include_tasks: ssh_host_keys_copy.yml
   tags: ssh_host_keys
   become: True
   when: install_ssh_host_keys_to_nfs
 
-- include: copy.yml
+- include_tasks: copy.yml
   when: install_ssh_host_keys_from_nfs
 
-- include: known.yml
+- include_tasks: known.yml
   when: install_ssh_known_hosts_from_http
 
