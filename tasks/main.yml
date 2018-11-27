@@ -4,19 +4,19 @@
 
 - block:
     - include_tasks: ssh_host_keys.yml
-    tags: ssh_host_keys
+  tags: ssh_host_keys
   when: generate_ssh_host_keys
   become: false
 
 - block:
     - include_tasks: ssh_known_hosts.yml
-    tags: ssh_known_hosts
+  tags: ssh_known_hosts
   when: generate_ssh_known_hosts
   become: false
 
 - block:
     - include_tasks: ssh_host_keys_copy.yml
-    tags: ssh_host_keys
+  tags: ssh_host_keys
   when: install_ssh_host_keys_to_nfs
   become: true
 
