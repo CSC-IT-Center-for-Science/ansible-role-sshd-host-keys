@@ -14,4 +14,4 @@
    - [ "", ".pub" ]
   notify:
    - reload sshd
-  when: running_as_ansible_pull
+  when: running_as_ansible_pull|bool

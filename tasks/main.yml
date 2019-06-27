@@ -5,25 +5,25 @@
 - block:
     - include_tasks: ssh_host_keys.yml
   tags: ssh_host_keys
-  when: generate_ssh_host_keys
+  when: generate_ssh_host_keys|bool
   become: false
 
 - block:
     - include_tasks: ssh_known_hosts.yml
   tags: ssh_known_hosts
-  when: generate_ssh_known_hosts
+  when: generate_ssh_known_hosts|bool
   become: false
 
 - block:
     - include_tasks: ssh_host_keys_copy.yml
   tags: ssh_host_keys
-  when: install_ssh_host_keys_to_nfs
+  when: install_ssh_host_keys_to_nfs|bool
   become: true
 
 - block:
     - include_tasks: copy.yml
-  when: install_ssh_host_keys_from_nfs
+  when: install_ssh_host_keys_from_nfs|bool
 
 - block:
     - include_tasks: known.yml
-  when: install_ssh_known_hosts_from_http
+  when: install_ssh_known_hosts_from_http|bool
